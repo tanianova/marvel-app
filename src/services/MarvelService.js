@@ -48,7 +48,7 @@ const useMarvelService = () => {
   const _transformComics = (comics) => {
     return {
       id: comics.id,
-      name: comics.name,
+      title: comics.title,
       description: comics.description || "There is no description",
       pageCount: comics.pageCount
         ? `${comics.pageCount} p.`

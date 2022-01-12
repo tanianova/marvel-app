@@ -1,9 +1,10 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+
 import AppHeader from "../appHeader/AppHeader";
 import Spinner from "../spinner/Spinner";
-// import { Page404, MainPage, ComicsPage, SingleComicPage } from "../pages"; //без ленивой подгрузки
+// import { Page404, MainPage, ComicsPage  } from "../pages"; //без ленивой подгрузки
 
 //динамические импорты отдельно, можно подгружать только дефолтные компоненты.будет подгружать тогда,когда он появится на странице
 const Page404 = lazy(() => import("../pages/404"));

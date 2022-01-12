@@ -1,7 +1,8 @@
 import { useHttp } from "../hooks/http.hook";
 
 const useMarvelService = () => {
-  const { loading, request, error, clearError } = useHttp();
+  // const { loading, request, error, clearError, process,setProcess } = useHttp();
+  const {  request,   clearError, process,setProcess } = useHttp();
 
   const _apiBase = "https://gateway.marvel.com:443/v1/public/";
   const _apiKey = "apikey=ae8ec0e15efe5dafc93642163047b6d1";
@@ -58,30 +59,32 @@ const useMarvelService = () => {
       price: comics.prices.price ? `${comics.prices.price}$` : "not available",
     };
   };
-      // Вариант модификации готового метода для поиска по имени. 
-    // Вызывать его можно вот так: getAllCharacters(null, name)
+  // Вариант модификации готового метода для поиска по имени.
+  // Вызывать его можно вот так: getAllCharacters(null, name)
 
-    // const getAllCharacters = async (offset = _baseOffset, name = '') => {
-    //     const res = await request(`${_apiBase}characters?limit=9&offset=${offset}${name ? `&name=${name}` : '' }&${_apiKey}`);
-    //     return res.data.results.map(_transformCharacter);
-    // }
+  // const getAllCharacters = async (offset = _baseOffset, name = '') => {
+  //     const res = await request(`${_apiBase}characters?limit=9&offset=${offset}${name ? `&name=${name}` : '' }&${_apiKey}`);
+  //     return res.data.results.map(_transformCharacter);
+  // }
 
-    // Или можно создать отдельный метод для поиска по имени
+  // Или можно создать отдельный метод для поиска по имени
 
-    const getCharacterByName = async (name) => {
-      const res = await request(`${_apiBase}characters?name=${name}&${_apiKey}`);
-      return res.data.results.map(_transformCharacter);
-  }
+  const getCharacterByName = async (name) => {
+    const res = await request(`${_apiBase}characters?name=${name}&${_apiKey}`);
+    return res.data.results.map(_transformCharacter);
+  };
 
   return {
-    loading,
-    error,
+    // loading,
+    // error,
     clearError,
+    process,
+    setProcess,
     getAllCharacters,
     getCharacter,
     getAllComics,
     getComics,
-    getCharacterByName
+    getCharacterByName,
   };
 };
 
